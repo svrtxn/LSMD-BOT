@@ -16,7 +16,6 @@ Incluye sistema de **tickets**, **gestión de servicios médicos**, **logs** y o
 
 ### 1. Categorías de tickets
 Crea las siguientes **categorías** en tu servidor de Discord y copia sus **IDs**:  
-
 - `PSICOTECNICOS`
 - `POSTULACIONES`
 - `CONVENIOS`
@@ -53,6 +52,7 @@ en el canal donde quieras que aparezca el **panel para entrar/salir de servicio*
 👉 Copia su **ID** y reemplázalo en los botones de servicio.
 
 ---
+
 ## 📝 Notas importantes
 - El bot debe tener permisos para **administrar canales y mensajes**.  
 - Reemplaza todos los **IDs de categorías y canales** por los de tu servidor.  
@@ -63,12 +63,12 @@ en el canal donde quieras que aparezca el **panel para entrar/salir de servicio*
 ---
 
 ## 🚀 Ejemplo de uso
-1. Un civil abre un ticket desde `/ticket-civiles` → el bot crea un canal en la categoría correspondiente.  
-2. Un EMS abre un ticket desde `/ticket-ems`.  
+1. Un civil abre un ticket desde el panel creado por`/ticket-civiles` → el bot crea un canal en la categoría correspondiente.  
+2. Un EMS abre un ticket desde el panel creado por `/ticket-ems`→ el bot crea un canal en la categoría correspondiente.    
 3. Los médicos entran en servicio con `/panel` → el bot registra su ingreso en `#servicios-activos` y envía log en `#logs-servicios`.  
 4. Al cerrar un ticket o salir de servicio, el bot envía registros automáticos a los canales de logs.  
 
 ---
 
 ## 👨‍💻 Autor
-Desarrollado para **SVRTXN**  
+Desarrollado por **SVRTXN**  
