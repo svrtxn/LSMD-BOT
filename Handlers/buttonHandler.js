@@ -7,12 +7,12 @@ async function loadButtons(client) {
         const button = require(file);
 
         // Verificación para evitar errores si el archivo no está bien estructurado
-        if (!button?.data?.name) {
-            console.warn(`⚠️ El botón en el archivo '${file}' no tiene definida 'data.name'. Saltando...`);
+        if (!button?.id) {
+            console.warn(`⚠️ El botón en el archivo '${file}' no tiene definida 'id'. Saltando...`);
             return;
         }
 
-        client.buttons.set(button.data.name, button);
+        client.buttons.set(button.id, button);
     });
 
     console.log('✅ Botones cargados correctamente');

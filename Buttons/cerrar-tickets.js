@@ -2,10 +2,7 @@ const { ButtonInteraction, ChannelType, PermissionFlagsBits, EmbedBuilder } = re
 const { createTranscript } = require('discord-html-transcripts');
 
 module.exports = {
-    data: {
-        name: 'cerrar-ticket',
-    },
-
+    id: 'cerrar-ticket',
     /**
      * @param {ButtonInteraction} interaction
      */
@@ -14,7 +11,7 @@ module.exports = {
             return interaction.reply({ content: '❌ Este botón solo funciona dentro de un canal de texto.', ephemeral: true });
         }
 
-        const logsChannelId = '1402477166100353166'; // Cambia por el canal donde guardas los transcripts
+        const logsChannelId = '1402477166100353166'; // LOGS TICKETS
         const logsChannel = interaction.guild.channels.cache.get(logsChannelId);
         if (!logsChannel) {
             return interaction.reply({ content: '❌ No se pudo encontrar el canal de logs.', ephemeral: true });
@@ -29,11 +26,11 @@ module.exports = {
             fileName: `${interaction.channel.name}.html`,
         });
 
-        // Obtener fecha y hora actual (hora del servidor)
+        // Obtener fecha y hora 
         const fechaCierre = new Date();
         const fechaLegible = `<t:${Math.floor(fechaCierre.getTime() / 1000)}:F>`; // formato Discord timestamp
 
-        // Crear embed con detalles del cierre
+        // embed de cierre
         const embed = new EmbedBuilder()
             .setColor('#ff4d4d')
             .setTitle('📁 Ticket Cerrado')
@@ -44,13 +41,9 @@ module.exports = {
             )
             .setFooter({ text: `ID del canal: ${interaction.channel.id}` });
 
-        // Enviar primero el embed
+  
         await logsChannel.send({ embeds: [embed] });
-
-        // Luego enviar el archivo transcript
         await logsChannel.send({ files: [transcript] });
-
-        // Confirmar al usuario y eliminar canal luego de unos segundos
         await interaction.editReply({ content: '✅ El ticket fue cerrado correctamente. El canal se eliminará en 5 segundos.' });
 
         setTimeout(() => {

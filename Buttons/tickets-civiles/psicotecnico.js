@@ -11,17 +11,13 @@ const {
 } = require('discord.js');
 
 module.exports = {
-    data: {
-        name: 'psicotecnico',
-    },
-
+    id: 'psicotecnico',
+ 
     async execute(interaction) {
-        // 1. Crear el formulario modal
         const modal = new ModalBuilder()
             .setCustomId('formularioPsicotecnico')
             .setTitle('Evaluación Psicotécnica 🧠 ');
 
-        // Inputs del formulario
         const nombreIC = new TextInputBuilder()
             .setCustomId('nombreIC')
             .setLabel('Nombre IC')
@@ -52,7 +48,6 @@ module.exports = {
             .setStyle(TextInputStyle.Short)
             .setRequired(true);
 
-        // Discord permite máximo 5 componentes en un modal
         modal.addComponents(
             new ActionRowBuilder().addComponents(nombreIC),
             new ActionRowBuilder().addComponents(edadIC),
@@ -61,29 +56,26 @@ module.exports = {
             new ActionRowBuilder().addComponents(antecedentes)
         );
 
-        // 2. Mostrar el modal
+
         await interaction.showModal(modal);
 
-        // 3. Esperar respuesta del usuario
         const submitted = await interaction.awaitModalSubmit({
-            time: 8 * 60 * 1000, // 8 minutos
+            time: 8 * 60 * 1000, 
             filter: i => i.user.id === interaction.user.id && i.customId === 'formularioPsicotecnico',
         }).catch(() => null);
 
         if (!submitted) return;
 
-        // 4. Obtener respuestas
         const nombreICValue = submitted.fields.getTextInputValue('nombreIC');
         const edadICValue = submitted.fields.getTextInputValue('edadIC');
         const telefonoICValue = submitted.fields.getTextInputValue('telefonoIC');
         const disponibilidadValue = submitted.fields.getTextInputValue('disponibilidad');
         const antecedentesValue = submitted.fields.getTextInputValue('antecedentes');
 
-        // 5. Crear canal privado para el ticket
         const ticketChannel = await interaction.guild.channels.create({
             name: `psicotecnico-${interaction.user.username}`,
             type: ChannelType.GuildText,
-            parent: '1402500686075265077', // Cambia por la ID de la categoría real
+            parent: '1402500686075265077', // // reemplazar ID de categoría PSICOTECNICO
             permissionOverwrites: [
                 {
                     id: interaction.user.id,

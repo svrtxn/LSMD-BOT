@@ -1,10 +1,8 @@
 const { ChannelType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
-    data: {
-        name: 'convenio',
-    },
-
+    id: 'convenio',
+  
     async execute(interaction) {
         const embed = new EmbedBuilder()
             .setColor('#5b9bd5')
@@ -27,15 +25,13 @@ module.exports = {
                 }
             ]
         });
-
-// BOTÓN "Cerrar Ticket"
+        // Botón "Cerrar Ticket"
         const cerrarButton = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setCustomId('cerrar-ticket')
                 .setLabel('Cerrar')
                 .setStyle(ButtonStyle.Danger)
         );
-        // Enviar embed al canal creado mencionando al usuario
         await ticketChannel.send({ content: `<@${interaction.user.id}>`, embeds: [embed], components: [cerrarButton], });
 
         await interaction.reply({

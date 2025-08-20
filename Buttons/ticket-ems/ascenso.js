@@ -1,10 +1,8 @@
 const { ChannelType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
-    data: {
-        name: 'ascenso',
-    },
-
+    id: 'ascenso',
+  
     async execute(interaction) {
         const embed = new EmbedBuilder()
             .setColor('#ff4d4d')
@@ -15,7 +13,7 @@ module.exports = {
         const ticketChannel = await interaction.guild.channels.create({
             name: `ascenso-${interaction.user.username}`,
             type: ChannelType.GuildText,
-            parent: '1402505050882052168',
+            parent: '1402505050882052168', // ID de la categoría ASCENSOS
             permissionOverwrites: [
                 {
                     id: interaction.user.id,
@@ -28,14 +26,14 @@ module.exports = {
             ]
         });
 
-// BOTÓN "Cerrar Ticket"
+        // Botón "Cerrar Ticket"
         const cerrarButton = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setCustomId('cerrar-ticket')
                 .setLabel('Cerrar')
                 .setStyle(ButtonStyle.Danger)
         );
-        // Enviar embed al canal creado mencionando al usuario
+
         await ticketChannel.send({ content: `<@${interaction.user.id}>`, embeds: [embed], components: [cerrarButton], });
 
         await interaction.reply({

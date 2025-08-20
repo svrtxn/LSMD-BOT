@@ -9,16 +9,18 @@ const { User, Message, GuildMember, ThreadMember } = Partials;
 const { loadEvents } = require('./Handlers/eventHandler');
 const { loadCommands } = require('./Handlers/commandHandler');
 const { loadButtons } = require('./Handlers/buttonHandler'); 
+const { loadSelectMenus } = require('./Handlers/selectMenuHandler');
 
 const client = new Client({
   intents: [Guilds, GuildMembers, GuildMessages],
   partials: [User, Message, GuildMember, ThreadMember]
 });
 
-client.config = require('./config.json');
+
 client.events = new Collection();
 client.commands = new Collection();
 client.buttons = new Collection();
+client.selectMenus = new Collection(); 
 
 (async () => {
   try {

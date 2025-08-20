@@ -62,7 +62,7 @@ module.exports = {
             .setTitle('Usuario Timeout')
             .setDescription(`**Usuario:** ${user.tag} (${user.id})\n**Razón:** ${reason}`)
             .setTimestamp()
-            .addFields({ name: 'Duración', value: `${duracion} segundos`, inline: true })
+            .addFields({ name: 'Duración', value: `${duracion} minutos`, inline: true })
             .setFooter({ text: `Timeout por ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() });
             
 
