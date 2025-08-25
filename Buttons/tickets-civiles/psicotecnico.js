@@ -92,7 +92,6 @@ module.exports = {
             ],
         });
 
-        // 6. Crear embed con la info de la solicitud
         const embed = new EmbedBuilder()
             .setColor('#ff4d4d')
             .setTitle('🧠  SOLICITUD DE EVALUACIÓN PSICOTÉCNICA')
@@ -116,10 +115,13 @@ module.exports = {
                 .setLabel('Cerrar')
                 .setStyle(ButtonStyle.Danger)
         );
-        // Enviar embed al canal creado mencionando al usuario
-        await ticketChannel.send({ content: `<@${interaction.user.id}>`, embeds: [embed], components: [cerrarButton], });
+        // CAMBIAR ID DEL ROL A MENCIONAR
+        await ticketChannel.send({ 
+            content: `<@${interaction.user.id}> <@&1354844183030010049>`, 
+            embeds: [embed], 
+            components: [cerrarButton], 
+        });
 
-        // 7. Confirmar al usuario que se creó el ticket
         await submitted.reply({
             content: `✅ Ticket para evaluación psicotécnica creado en <#${ticketChannel.id}>.`,
             ephemeral: true,

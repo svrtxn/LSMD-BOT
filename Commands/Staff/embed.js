@@ -43,10 +43,7 @@ module.exports = {
         const thumbnail = interaction.options.getString('thumbnail');
 
         if (descripcion.length > 2048) {
-            return interaction.reply({
-                content: '❌ La descripción no puede exceder los 2048 caracteres.',
-                ephemeral: true
-            });
+            return interaction.reply({ content: '❌ La descripción no puede exceder los 2048 caracteres.', ephemeral: true });
         }
 
         const embed = new EmbedBuilder()
@@ -59,10 +56,22 @@ module.exports = {
         if (thumbnail) embed.setThumbnail(thumbnail);
 
         await interaction.channel.send({ embeds: [embed] });
+        await interaction.reply({ content: '✅ Embed enviado correctamente.', ephemeral: true });
 
-        await interaction.reply({
-            content: '✅ Embed enviado correctamente.',
-            ephemeral: true
-        });
+        // Log
+        const logChannel = await interaction.guild.channels.fetch('1402480570604453930');
+        if (logChannel) {
+            const logEmbed = new EmbedBuilder()
+                .setColor('Blue')
+                .setTitle('📨 Embed enviado')
+                .addFields(
+                    { name: 'Canal', value: interaction.channel.name, inline: true },
+                    { name: 'Usuario', value: `<@${interaction.user.id}>`, inline: true },
+                    { name: 'Título', value: titulo },
+                    { name: 'Descripción', value: descripcion }
+                )
+                .setTimestamp();
+            await logChannel.send({ embeds: [logEmbed] });
+        }
     }
 };

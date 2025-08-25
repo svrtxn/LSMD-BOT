@@ -1,4 +1,7 @@
-const { ChannelType, EmbedBuilder } = require('discord.js');
+const { ChannelType,
+        EmbedBuilder,   
+        ButtonBuilder, 
+        ButtonStyle } = require('discord.js');
 
 module.exports = {
     id: 'reporte',
@@ -35,7 +38,11 @@ module.exports = {
                 .setStyle(ButtonStyle.Danger)
         );
    
-        await ticketChannel.send({ content: `<@${interaction.user.id}>`, embeds: [embed], components: [cerrarButton], });
+        await ticketChannel.send({ 
+            content: `<@${interaction.user.id}> <@&1354844183030010049>`, 
+            embeds: [embed], 
+            components: [cerrarButton], 
+        });
 
         await interaction.reply({
             content: `✅ Ticket de reporte creado en <#${ticketChannel.id}>.`,

@@ -1,4 +1,11 @@
-const { ButtonInteraction, ChannelType, PermissionFlagsBits, EmbedBuilder } = require('discord.js');
+const { ButtonInteraction, 
+        ChannelType, 
+        PermissionFlagsBits, 
+        EmbedBuilder,    
+        ButtonBuilder, 
+        ButtonStyle 
+} = require('discord.js');
+
 const { createTranscript } = require('discord-html-transcripts');
 
 module.exports = {

@@ -5,7 +5,9 @@ const {
     TextInputBuilder,
     TextInputStyle,
     ActionRowBuilder,
-    PermissionFlagsBits,
+    PermissionFlagsBits,    
+    ButtonBuilder, 
+    ButtonStyle      
 } = require('discord.js');
 
 module.exports = {
@@ -103,7 +105,11 @@ module.exports = {
                 .setStyle(ButtonStyle.Danger)
         );
 
-        await ticketChannel.send({ content: `<@${interaction.user.id}>`, embeds: [embed], components: [cerrarButton], });
+        await ticketChannel.send({ 
+            content: `<@${interaction.user.id}> <@&1354844183030010049>`, 
+            embeds: [embed], 
+            components: [cerrarButton], 
+        });
 
         await submitted.reply({
             content: `✅ Ticket creado correctamente en <#${ticketChannel.id}>.`,

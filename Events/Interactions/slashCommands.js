@@ -8,7 +8,6 @@ module.exports = {
      * @param {*} client 
      */
     async execute(interaction, client) {
-        // 🎯 Comandos de barra (slash)
         if (interaction.isChatInputCommand()) {
             const command = client.commands.get(interaction.commandName);
             if (!command) {
@@ -18,7 +17,7 @@ module.exports = {
                 });
             }
 
-            // Restricción opcional para desarrollador
+            // Restricción para desarrollador
             if (command.developer && interaction.user.id !== "321441044384186369") {
                 return interaction.reply({
                     content: '❌ Solo el desarrollador puede usar este comando.',
@@ -37,42 +36,29 @@ module.exports = {
             }
         }
 
-        // 🔘 Botones
-        else if (interaction.isButton()) {
-            const button = client.buttons.get(interaction.customId);
-            if (!button) {
-                console.error(`❌ Botón no encontrado: ${interaction.customId}`);
-                return;
-            }
+       else if (interaction.isButton()) {
+    const button = client.buttons.get(interaction.customId);
+    if (!button) {
+        console.error(`❌ Botón no encontrado: ${interaction.customId}`);
+        return;
+    }
 
-            try {
-                await button.execute(interaction, client);
-            } catch (err) {
-                console.error(`❌ Error al ejecutar botón: ${err}`);
-                return interaction.reply({
-                    content: '❌ Ocurrió un error al ejecutar la acción del botón.',
-                    ephemeral: true
-                });
-            }
+    try {
+        await button.execute(interaction, client);
+    } catch (err) {
+        console.error(`❌ Error al ejecutar botón: ${err}`);
+        if (interaction.replied || interaction.deferred) {
+            await interaction.followUp({
+                content: '❌ Ocurrió un error al ejecutar la acción del botón.',
+                ephemeral: true
+            });
+        } else {
+            await interaction.reply({
+                content: '❌ Ocurrió un error al ejecutar la acción del botón.',
+                ephemeral: true
+            });
         }
-
-        // 📩 Select Menus
-        else if (interaction.isStringSelectMenu()) {
-            const menu = client.selectMenus?.get(interaction.customId);
-            if (!menu) {
-                console.error(`❌ Select menu no encontrado: ${interaction.customId}`);
-                return;
-            }
-
-            try {
-                await menu.execute(interaction, client);
-            } catch (err) {
-                console.error(`❌ Error al ejecutar select menu: ${err}`);
-                return interaction.reply({
-                    content: '❌ Ocurrió un error al procesar la selección.',
-                    ephemeral: true
-                });
-            }
-        }
+    }
+}
     }
 };

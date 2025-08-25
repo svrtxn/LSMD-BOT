@@ -12,7 +12,7 @@ const { loadButtons } = require('./Handlers/buttonHandler');
 
 const client = new Client({
   intents: [Guilds, GuildMembers, GuildMessages],
-  partials: [User, Message, GuildMember, ThreadMember]
+  partials: [User, Message, GuildMember, ThreadMember] 
 });
 
 

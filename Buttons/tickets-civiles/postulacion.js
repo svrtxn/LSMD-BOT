@@ -5,7 +5,9 @@ const {
     TextInputBuilder,
     TextInputStyle,
     ActionRowBuilder,
-    PermissionFlagsBits,
+    PermissionFlagsBits,   
+    ButtonBuilder, 
+    ButtonStyle      
 } = require('discord.js');
 
 module.exports = {
@@ -92,7 +94,7 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setColor('#28a745')
             .setTitle('📋 POSTULACIÓN A L.S.M.D')
-            .setDescription(`Formulario completado por <@${interaction.user.id}>**`)
+            .setDescription(`Formulario completado por <@${interaction.user.id}>`)
             .addFields(
                 { name: 'Nombre y Apellido (IC):', value: nombreICValue },
                 { name: 'Edad (OOC):', value: edadOOCValue },
@@ -112,7 +114,12 @@ module.exports = {
                 .setLabel('Cerrar')
                 .setStyle(ButtonStyle.Danger)
         );
-        await ticketChannel.send({ content: `<@${interaction.user.id}>`, embeds: [embed], components: [cerrarButton], });
+        await ticketChannel.send({ 
+            content: `<@${interaction.user.id}> <@&1354844183030010049>`, 
+            embeds: [embed], 
+            components: [cerrarButton], 
+        });
+
 
         await submitted.reply({
             content: `✅ ¡Formulario enviado! Tu ticket fue creado en <#${ticketChannel.id}>.`,

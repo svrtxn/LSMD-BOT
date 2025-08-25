@@ -57,5 +57,6 @@ module.exports = {
         await member.kick(reason).catch(console.error);
 
         return interaction.reply({ embeds: [embed] });
+        
     },
 };
