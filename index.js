@@ -9,7 +9,6 @@ const { User, Message, GuildMember, ThreadMember } = Partials;
 const { loadEvents } = require('./Handlers/eventHandler');
 const { loadCommands } = require('./Handlers/commandHandler');
 const { loadButtons } = require('./Handlers/buttonHandler'); 
-const { loadSelectMenus } = require('./Handlers/selectMenuHandler');
 
 const client = new Client({
   intents: [Guilds, GuildMembers, GuildMessages],
