@@ -1,4 +1,9 @@
-const { ChatInputCommandInteraction, SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } = require('discord.js');
+const { 
+    SlashCommandBuilder, 
+    PermissionFlagsBits, 
+    EmbedBuilder, 
+    MessageFlags 
+} = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -15,16 +20,16 @@ module.exports = {
             option.setName('usuario')
                 .setDescription('Usuario del que se eliminarán los mensajes')
         )
-        .setDefaultMemberPermissions(0),
+        .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages),
 
     async execute(interaction) {
         const cantidad = interaction.options.getInteger('cantidad');
         const usuario = interaction.options.getUser('usuario');
 
-        const mensajes = await interaction.channel.messages.fetch();
-
         try {
+            const mensajes = await interaction.channel.messages.fetch();
             let mensajesEliminados;
+
             if (usuario) {
                 let i = 0;
                 mensajesEliminados = mensajes.filter((message) => {
@@ -40,24 +45,25 @@ module.exports = {
 
             const eliminados = await interaction.channel.bulkDelete(mensajesEliminados, true);
 
+
             await interaction.reply({
                 content: usuario 
-                    ? `✅ Se han eliminado ${eliminados.size} mensajes del usuario ${usuario.tag}.`
+                    ? `✅ Se han eliminado ${eliminados.size} mensajes del usuario **${usuario.tag}**.`
                     : `✅ Se han eliminado ${eliminados.size} mensajes.`,
-                ephemeral: true
+                flags: MessageFlags.Ephemeral
             });
 
-            // Enviar log
-            const logChannel = await interaction.guild.channels.fetch('1402480570604453930');
+            const logChannel = await interaction.guild.channels.fetch('1402480570604453930').catch(() => null);
+
             if (logChannel) {
                 const embed = new EmbedBuilder()
                     .setColor('Red')
                     .setTitle('🗑️ Mensajes eliminados')
                     .addFields(
-                        { name: 'Canal', value: interaction.channel.name, inline: true },
-                        { name: 'Usuario', value: `<@${interaction.user.id}>`, inline: true },
-                        { name: 'Cantidad eliminada', value: `${eliminados.size}` },
-                        { name: 'Objetivo', value: usuario ? usuario.tag : 'Todos' }
+                        { name: 'Canal', value: `<#${interaction.channel.id}>`, inline: true },
+                        { name: 'Ejecutor', value: `<@${interaction.user.id}>`, inline: true },
+                        { name: 'Cantidad eliminada', value: `${eliminados.size}`, inline: true },
+                        { name: 'Objetivo', value: usuario ? usuario.tag : 'Todos', inline: true }
                     )
                     .setTimestamp();
 
@@ -66,7 +72,18 @@ module.exports = {
 
         } catch (err) {
             console.error(err);
-            await interaction.reply({ content: '❌ Hubo un error al eliminar los mensajes.', ephemeral: true });
+
+            if (!interaction.replied) {
+                await interaction.reply({
+                    content: '❌ Hubo un error al eliminar los mensajes.',
+                    flags: MessageFlags.Ephemeral
+                });
+            } else {
+                await interaction.followUp({
+                    content: '❌ Hubo un error al eliminar los mensajes.',
+                    flags: MessageFlags.Ephemeral
+                });
+            }
         }
     }
 };

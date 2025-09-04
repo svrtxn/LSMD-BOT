@@ -20,7 +20,7 @@ module.exports = {
                   .setDescription('Razón del baneo')
         ),
 
-    /**
+    /**a
      * @param {ChatInputCommandInteraction} interaction
      */
     async execute(interaction, client) {
