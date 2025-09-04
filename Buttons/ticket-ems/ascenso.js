@@ -1,7 +1,10 @@
-const { ChannelType,
-        EmbedBuilder,  
-        ButtonBuilder, 
-        ButtonStyle } = require('discord.js');
+const { 
+    ChannelType,
+    EmbedBuilder,   
+    ButtonBuilder, 
+    ButtonStyle,
+    ActionRowBuilder
+} = require('discord.js');
 
 module.exports = {
     id: 'ascenso',
@@ -11,12 +14,12 @@ module.exports = {
             .setColor('#ff4d4d')
             .setTitle('📋 Solicitar Ascenso')
             .setDescription('Has solicitado un **ascenso de rango** o una **especialidad** dentro del equipo médico. Un superior se pondrá en contacto contigo para continuar con el proceso.')
-            .setFooter({ text: 'Junta Directiva - LSMD', iconURL: interaction.guild.iconURL({ dynamic: true }) });
+            .setFooter({ text: 'Junta Directiva - SAMS', iconURL: interaction.guild.iconURL({ dynamic: true }) });
 
         const ticketChannel = await interaction.guild.channels.create({
             name: `ascenso-${interaction.user.username}`,
             type: ChannelType.GuildText,
-            parent: '1402505050882052168', // ID de la categoría ASCENSOS
+            parent: '1413250664838201435', // ID de la categoría ASCENSOS
             permissionOverwrites: [
                 {
                     id: interaction.user.id,
@@ -38,7 +41,7 @@ module.exports = {
         );
 
        await ticketChannel.send({ 
-            content: `<@${interaction.user.id}> <@&1354844183030010049>`, 
+            content: `<@${interaction.user.id}> <@&1413250858896068781>`, 
             embeds: [embed], 
             components: [cerrarButton], 
         });

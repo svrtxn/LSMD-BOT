@@ -74,7 +74,7 @@ module.exports = {
         const ticketChannel = await interaction.guild.channels.create({
             name: `postulacion-${interaction.user.username}`,
             type: ChannelType.GuildText,
-            parent: '1402500662624911510', // reemplazar ID de categoría POSTULACION
+            parent: '1413249555784405203', // reemplazar ID de categoría POSTULACION
             permissionOverwrites: [
                 {
                     id: interaction.user.id,
@@ -93,7 +93,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setColor('#28a745')
-            .setTitle('📋 POSTULACIÓN A L.S.M.D')
+            .setTitle('📋 POSTULACIÓN A SAMS')
             .setDescription(`Formulario completado por <@${interaction.user.id}>`)
             .addFields(
                 { name: 'Nombre y Apellido (IC):', value: nombreICValue },
@@ -103,7 +103,7 @@ module.exports = {
                 { name: 'Motivación y experiencia:', value: experienciaValue }
             )
             .setFooter({
-                text: 'Los Santos Medical Department',
+                text: 'San Andreas Medical Services',
                 iconURL: interaction.guild.iconURL({ dynamic: true }),
             });
 
@@ -115,7 +115,7 @@ module.exports = {
                 .setStyle(ButtonStyle.Danger)
         );
         await ticketChannel.send({ 
-            content: `<@${interaction.user.id}> <@&1354844183030010049>`, 
+            content: `<@${interaction.user.id}> <@&1413250858896068781>`, 
             embeds: [embed], 
             components: [cerrarButton], 
         });

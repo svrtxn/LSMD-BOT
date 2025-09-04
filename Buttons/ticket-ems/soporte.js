@@ -1,7 +1,10 @@
-const { ChannelType,
-        EmbedBuilder,   
-        ButtonBuilder, 
-        ButtonStyle } = require('discord.js');
+const { 
+    ChannelType,
+    EmbedBuilder,   
+    ButtonBuilder, 
+    ButtonStyle,
+    ActionRowBuilder 
+} = require('discord.js');
 
 module.exports = {
     id: 'soporte',
@@ -11,13 +14,12 @@ module.exports = {
             .setColor('#ff4d4d')
             .setTitle('📋 Soporte y Consultas')
             .setDescription('Por favor, indícanos tus dudas, consultas o problemas, y con gusto te ayudaremos a resolverlas.')
-            .setFooter({ text: 'Junta Directiva - LSMD', iconURL: interaction.guild.iconURL({ dynamic: true }) });
-
+            .setFooter({ text: 'Junta Directiva - SAMS', iconURL: interaction.guild.iconURL({ dynamic: true }) });
 
         const ticketChannel = await interaction.guild.channels.create({
             name: `ascenso-${interaction.user.username}`,
             type: ChannelType.GuildText,
-            parent: '1402505398186938478', // ID de la categoría SOPORTE
+            parent: '1413250664838201435', // ID de la categoría SOPORTE
             permissionOverwrites: [
                 {
                     id: interaction.user.id,
@@ -29,6 +31,7 @@ module.exports = {
                 }
             ]
         });
+
         const cerrarButton = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setCustomId('cerrar-ticket')
@@ -37,7 +40,7 @@ module.exports = {
         );
      
         await ticketChannel.send({ 
-            content: `<@${interaction.user.id}> <@&1354844183030010049>`, 
+            content: `<@${interaction.user.id}> <@&1413250858896068781>`, 
             embeds: [embed], 
             components: [cerrarButton], 
         });

@@ -75,7 +75,7 @@ module.exports = {
         const ticketChannel = await interaction.guild.channels.create({
             name: `psicotecnico-${interaction.user.username}`,
             type: ChannelType.GuildText,
-            parent: '1402500686075265077', // // reemplazar ID de categoría PSICOTECNICO
+            parent: '1413249260069191820', // // reemplazar ID de categoría PSICOTECNICO
             permissionOverwrites: [
                 {
                     id: interaction.user.id,
@@ -104,20 +104,20 @@ module.exports = {
                 { name: '¿Tiene antecedentes IC?', value: antecedentesValue }
             )
             .setFooter({
-                text: 'Departamento Psicológica - LSMD',
+                text: 'Departamento Psicológica - SAMS',
                 iconURL: interaction.guild.iconURL({ dynamic: true }),
             });
 
-        // BOTÓN "Cerrar Ticket"
+      
         const cerrarButton = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setCustomId('cerrar-ticket')
                 .setLabel('Cerrar')
                 .setStyle(ButtonStyle.Danger)
         );
-        // CAMBIAR ID DEL ROL A MENCIONAR
+
         await ticketChannel.send({ 
-            content: `<@${interaction.user.id}> <@&1354844183030010049>`, 
+            content: `<@${interaction.user.id}> <@&1412906649294999623>`, 
             embeds: [embed], 
             components: [cerrarButton], 
         });

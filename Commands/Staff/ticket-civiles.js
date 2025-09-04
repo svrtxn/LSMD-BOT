@@ -36,8 +36,8 @@ module.exports = {
                 .setStyle(ButtonStyle.Success),
 
             new ButtonBuilder()
-                .setCustomId('convenio')
-                .setLabel('🤝 Convenio')
+                .setCustomId('evento')
+                .setLabel('🎉 Supervisión de Evento')
                 .setStyle(ButtonStyle.Secondary
                 )
                 
@@ -46,28 +46,27 @@ module.exports = {
 
         const embed = new EmbedBuilder()
     .setColor('#0099ff')
-    .setTitle('📌 Postulación y Solicitudes | L.S.M.D')
+    .setTitle('📌 Postulación y Solicitudes | SAMS')
     .setDescription(`
-        Bienvenido/a al sistema de atención médica de **Los Santos Medical Department** 🏥.
+        Bienvenido/a al sistema de atención médica de **San Andreas Medical Service** 🏥.
 
-        Selecciona el tipo de solicitud que deseas realizar presionando uno de los botones a continuación.
+        Utiliza los botones a continuación para abrir un ticket privado. Todo el proceso será interno y confidencial.
 
         📅 **Cita Médica**  
-        Solicitud para **agendar una consulta médica específica** con nuestro equipo.
+        Solicita una cita médica en cualquier especialidad para identificar y tratar problemas de salud.
 
         🧠 **Psicotécnico**  
-        Evaluación psicológica obligatoria para **obtener tu licencia de portación de armas**.
+        Solicita tu evaluación psicológica por SAMS para certificar que estás mental y físicamente apto para poseer y portar un arma en el Estado de San Andreas.
 
-        📋 **Postulación EMS**  
-        Opción para **postular a formar parte del equipo médico de LSMD**. Al seleccionarla, iniciarás el proceso de reclutamiento.
+        📋 **Postulación SAMS**  
+        Opción para **postular a formar parte del equipo médico de SAMS**. Al seleccionarla, iniciarás el proceso de reclutamiento.
 
-        🤝 **Convenio**  
-        Si eres **dueño o encargado de un local**, puedes solicitar aquí un **convenio oficial con LSMD** para acceder a beneficios exclusivos para tus empleados.
-
+        🎉 Supervisión de Evento  
+        ¿Usted o su PYME requieren personal de SAMS para supervisar o cubrir un evento? Podemos ayudarle, siempre que haya notificación previa.
     `)
     .setThumbnail(interaction.guild.iconURL({ dynamic: true }))
     .setFooter({
-        text: 'Los Santos Medical Department | Complex RP',
+        text: 'San Andreas Medical Service | Distrito X',
         iconURL: interaction.guild.iconURL({ dynamic: true }),
     });
 

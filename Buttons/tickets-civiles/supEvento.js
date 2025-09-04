@@ -1,23 +1,25 @@
-const { ChannelType, 
-        EmbedBuilder,    
-        ButtonBuilder, 
-        ButtonStyle
- } = require('discord.js');
+const { 
+    ChannelType, 
+    EmbedBuilder,    
+    ButtonBuilder, 
+    ButtonStyle,
+    ActionRowBuilder
+} = require('discord.js');
 
 module.exports = {
-    id: 'convenio',
+    id: 'evento',
   
     async execute(interaction) {
         const embed = new EmbedBuilder()
             .setColor('#5b9bd5')
-            .setTitle('SOLICITUD DE CONVENIO🤝 ')
-            .setDescription('Gracias por tu interés en establecer un convenio con **LSMD**. Un miembro de la junta directiva se pondrá en contacto contigo.')
-            .setFooter({ text: 'Los Santos Medical Department', iconURL: interaction.guild.iconURL({ dynamic: true }) });
+            .setTitle('SUPEVISIÓN DE EVENTO 🤝 ')
+            .setDescription('Gracias por tu interés en incluir a un SAMS para supervisar el evento. Un miembro de la junta directiva se pondrá en contacto contigo.')
+            .setFooter({ text: 'San Andreas Medical Services', iconURL: interaction.guild.iconURL({ dynamic: true }) });
 
         const ticketChannel = await interaction.guild.channels.create({
-            name: `convenio-${interaction.user.username}`,
+            name: `supEvento-${interaction.user.username}`,
             type: ChannelType.GuildText,
-            parent: '1402500642219753588',
+            parent: '1413250664838201435',
             permissionOverwrites: [
                 {
                     id: interaction.user.id,
@@ -37,7 +39,7 @@ module.exports = {
                 .setStyle(ButtonStyle.Danger)
         );
         await ticketChannel.send({ 
-            content: `<@${interaction.user.id}> <@&1354844183030010049>`, 
+            content: `<@${interaction.user.id}> <@&1413250858896068781>`, 
             embeds: [embed], 
             components: [cerrarButton], 
         });

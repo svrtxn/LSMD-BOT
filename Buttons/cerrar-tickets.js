@@ -18,7 +18,7 @@ module.exports = {
             return interaction.reply({ content: '❌ Este botón solo funciona dentro de un canal de texto.', ephemeral: true });
         }
 
-        const logsChannelId = '1402477166100353166'; // LOGS TICKETS
+        const logsChannelId = '1413256361629847592'; // LOGS TICKETS
         const logsChannel = interaction.guild.channels.cache.get(logsChannelId);
         if (!logsChannel) {
             return interaction.reply({ content: '❌ No se pudo encontrar el canal de logs.', ephemeral: true });
@@ -35,7 +35,7 @@ module.exports = {
 
         // Obtener fecha y hora 
         const fechaCierre = new Date();
-        const fechaLegible = `<t:${Math.floor(fechaCierre.getTime() / 1000)}:F>`; // formato Discord timestamp
+        const fechaLegible = `<t:${Math.floor(fechaCierre.getTime() / 1000)}:F>`;
 
         // embed de cierre
         const embed = new EmbedBuilder()

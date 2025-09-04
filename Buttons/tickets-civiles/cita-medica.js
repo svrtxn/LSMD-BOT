@@ -66,7 +66,7 @@ module.exports = {
         const ticketChannel = await interaction.guild.channels.create({
             name: `cita-${interaction.user.username}`,
             type: ChannelType.GuildText,
-            parent: '1402500397259559004', // ID de la categoría CITAS MÉDICAS
+            parent: '1413249260069191820', // ID de la categoría CITAS MÉDICAS
             permissionOverwrites: [
                 {
                     id: interaction.user.id,
@@ -106,7 +106,7 @@ module.exports = {
         );
 
         await ticketChannel.send({ 
-            content: `<@${interaction.user.id}> <@&1354844183030010049>`, 
+            content: `<@${interaction.user.id}> <@&1413250858896068781>`, 
             embeds: [embed], 
             components: [cerrarButton], 
         });

@@ -27,24 +27,6 @@ module.exports = {
                 content: `🗑️ El canal **${nombre}** será eliminado. Razón: ${razon}`,
                 ephemeral: true
             });
-
-           
-            const logChannel = await interaction.guild.channels.fetch('1402480570604453930');
-
-            if (logChannel) {
-                const embed = new EmbedBuilder()
-                    .setColor('Red')
-                    .setTitle('🗑️ Canal eliminado')
-                    .addFields(
-                        { name: 'Canal', value: nombre, inline: true },
-                        { name: 'Eliminado por', value: `<@${interaction.user.id}>`, inline: true },
-                        { name: 'Razón', value: razon }
-                    )
-                    .setTimestamp();
-
-                await logChannel.send({ embeds: [embed] });
-            }
-
         
             await canal.delete(razon);
 

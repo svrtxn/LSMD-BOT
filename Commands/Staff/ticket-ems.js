@@ -57,7 +57,7 @@ Solicita un **ascenso de rango** dentro del equipo médico o una **especialidad*
     `)
     .setThumbnail(interaction.guild.iconURL({ dynamic: true }))
     .setFooter({
-        text: 'Los Santos Medical Department | Complex RP',
+        text: 'San Andreas Medical Service | Distrito X',
         iconURL: interaction.guild.iconURL({ dynamic: true }),
     });
 

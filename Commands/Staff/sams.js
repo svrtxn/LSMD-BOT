@@ -7,25 +7,22 @@ module.exports = {
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
     async execute(interaction) {
-        const rolesTexto = `# :airplane_arriving: BIENVENIDOS AL DISCORD DEL SAN ANDREA'S MEDICAL SERVICES
+        const rolesTexto = `# 📢 Reportes SAMS
 
-¡Hola y bienvenido/a al Servidor del San Andreas Medical Services – Distrito X! :stethoscope:
-Aquí encontrarás todo lo necesario para mantenerte informado, participar en actividades y formar parte de nuestra comunidad.
+Aquí los integrantes del equipo SAMS podrán dejar reportes relacionados con:
 
-## :pushpin:﹒ᴘʀɪᴍᴇʀᴏꜱ ᴘᴀꜱᴏꜱ
+× Evasión de rol médico.
+× Faltas a la normativa del hospital.
+× Conductas inapropiadas dentro del rol médico.
 
-× Cambia tu apodo por tu Nombre y Apellido (IC) para postular o ser atendido.
-× Lee con atención la sección de https://discord.com/channels/1412883873615839262/1412906386748084265 y selecciona el asunto que mas se ajuste a tus necesidades.
-× Evitar spam o flood 
-× Prohibido metagaming → El ver la lista de miembros o canales del Discord no otorga conocimiento IC sobre la institución.
+### ⚠ Importante:
 
-:warning: Únicamente la información publicada en el canal ⁠https://discord.com/channels/1412883873615839262/1412911239272861899 puede considerarse válida IC para la ciudadanía.
+× Incluye siempre el ID del jugador involucrado.
+× Describe brevemente la situación observada.
+× Si es posible, adjunta capturas o evidencia.
 
-## :receipt:﹒ᴇɴ ᴇꜱᴛᴇ ꜱᴇʀᴠɪᴅᴏʀ ᴘᴏᴅʀᴀꜱ:
-
-:ambulance: Solicitar atención o hacer consultas.
-:loudspeaker: Estar al tanto de anuncios, eventos y actualizaciones.
-:stethoscope: Si formas parte del SAMS, acceder a toda la información interna del hospital.`;
+🔒 Toda la información compartida aquí será revisada por la jefatura SAMS y el Staff de DistritoX de *manera confidencial.*
+`;
 
         try {
             const partes = rolesTexto.match(/[\s\S]{1,1900}/g);
