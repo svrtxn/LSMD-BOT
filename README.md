@@ -56,7 +56,6 @@ en el canal donde quieras que aparezca el **panel para entrar/salir de servicio*
 ## 📝 Notas importantes
 - El bot debe tener permisos para **administrar canales y mensajes**.  
 - Reemplaza todos los **IDs de categorías y canales** por los de tu servidor.  
-- Puedes **eliminar comandos innecesarios** (ej: `ban.js`, `timeout.js`).  
 - Existen comandos de **reload (buttons/commands)** para actualizar sin reiniciar el bot.  
 - Revisa que los **paneles y embeds** funcionen tras cualquier cambio.
 
